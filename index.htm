@@ -180,7 +180,7 @@ function random(seed) {
 function setDefault(){
   const queryString = window.location.search;
   let seed=Math.floor(Math.random() * 1000000); //Random number by default
-  let version="demoSpiel"
+  let version="full"
   if (queryString){
       const urlParams = new URLSearchParams(queryString);
       seed = urlParams.get('s')
