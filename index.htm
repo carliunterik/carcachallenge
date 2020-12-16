@@ -81,7 +81,7 @@ button:disabled  {
   color: rgb(158, 158, 158);
 }
 
-#share{
+.btns{
     border: 2px solid black;
 }
 
@@ -98,9 +98,33 @@ button:disabled  {
     border-bottom: 1px solid;
 }
 
+#welcome {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-
+#welcomeContent {
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 5%;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
  
+#text{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.5vh;
+  text-align: left;
+}
 
  
 @font-face {
@@ -119,6 +143,31 @@ button:disabled  {
 
 <body onload="setDefault()">
 
+<div id="welcome">
+  <div id="welcomeContent">
+    <div id="title">Carcassonne Solo Challenger</div>
+    <div id="text">
+    <p>This tool makes easy the organization of challenges following the official solo variant for Carcassonne (<a target="_blank" href="https://www.hans-im-glueck.de/_Resources/Persistent/5e28ae929b2a02bb8feccd2e2315c98f2ed58d9b/CarcBasis_SoloRegel_9_E.pdf">see rules here</a>).</p>
+
+  <p>Each challenge is identifiable with a unique number, so you can share it with anyone using the Share button to challenge your friends.</p>
+
+      The basic idea is:
+      <ol>
+        <li>Place the starting tile on the table</li>
+        <li>In the app press the right arrow to see the next tile</li>
+        <li>Look for that particular tile, and place it on the table</li>
+        <li>Deploy a meeple of the respective color (as shown in the app) according to the rules</li>
+        <li>Press the right arrow again to see the next tile</li>
+        <li>Repeat until no tiles are left, or you cannot deploy any meeple</li>
+      </ol>
+
+      <p>For express challenges, this app also includes the <a target="_blank" href="https://www.boardgamegeek.com/boardgame/183453/carcassonne-demo-spiel">Demo-spiel</a> version with only 20 tiles. For this, you can use only 2 or 3 meeples in two colors.</p>
+
+      <button class="btns" onclick="closeModal()">Continue</button>
+    </div>
+  </div>
+</div>
+
 
 <div id="wrapper">
     <div id="header">
@@ -126,11 +175,11 @@ button:disabled  {
         <input id="seed" name="seed" autofocus type="number" placeholder="Enter a number">
         <!-- <label for="version">Version</label> -->
         <select name="version" id="version">
+            <option value="full" selected="selected">Base game (72 tiles)</option>
             <option value="demoSpiel">Demo-Spiel (20 tiles)</option>
             <!-- <option value="fur2">Für 2 (48 tiles)</option> -->
-            <option value="full" selected="selected">Base game (72 tiles)</option>
           </select>
-          <button id="share" onclick="share()">Share</button>
+          <button class="btns" onclick="share()">Share</button>
     </div>
     <div id="content">
             <img id="tile">
@@ -151,6 +200,10 @@ button:disabled  {
     document.getElementById("version").addEventListener("change", shuffleThis)
     //button actions are on buttons
 
+
+function closeModal() {
+  document.getElementById("welcome").style.display = "none";
+}
 
 
     //Shuffle an array using a particular seed using translation array.length times
