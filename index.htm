@@ -274,12 +274,15 @@ function checkButtons(){
     //Define counter text
     if (index == 0){
         document.getElementById("counter").innerText = "Starting tile";
+        //Define null meeple in starting tile
+        document.getElementById("currentColor").src = ""
         }else{
         document.getElementById("counter").innerText = index + 1 + " of " + images.length;
+        //Define meeple order image
+        document.getElementById("currentColor").src = "meeples/" + index % nmeeples + ".png"
     }
 
-    //Define meeple order image
-    document.getElementById("currentColor").src = "meeples/" + index % nmeeples + ".png"
+    
     
 }
 
