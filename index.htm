@@ -199,8 +199,8 @@ button:disabled  {
     document.getElementById("seed").addEventListener("input", shuffleThis)
     document.getElementById("version").addEventListener("change", shuffleThis)
     //button actions are on buttons
-
-
+   
+   
 function closeModal() {
   document.getElementById("welcome").style.display = "none";
 }
@@ -231,15 +231,22 @@ function random(seed) {
 }
 
 
+//Declare lasttile as global variable
+var lasttile = 0
+   
 //Check if some seed is in the URL if not define a random number
 function setDefault(){
-  const queryString = window.location.search;
+//   const queryString = window.location.search;
   let seed=Math.floor(Math.random() * 1000000); //Random number by default
   let version="full"
   if (queryString){
       const urlParams = new URLSearchParams(queryString);
       seed = urlParams.get('s')
       version = urlParams.get('v')
+      if (urlParams.get('l')){
+         lasttile = urlParams.get('l')
+      }
+     
   }
   document.getElementById("seed").value = seed;
   document.getElementById("version").value = version;
@@ -342,7 +349,12 @@ function checkButtons(){
 
 //Share function
 function share() {
-  var person = prompt("Copy the following URL to share this challenge", window.location.href.split('?')[0] + "?s="+seed+"&v="+document.getElementById("version").value);
+   var textLasttile = ""
+  if (lasttile > 0){
+ textLasttile = "&l="+ index + 1
+  }
+  var person = prompt("Copy the following URL to share this challenge", window.location.href.split('?')[0] + "?s="+seed+"&v="+document.getElementById("version").value + textLasttile);
+
 }
 
 //TILE DEFINITIONS
