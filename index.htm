@@ -236,7 +236,7 @@ var lasttile = 0
    
 //Check if some seed is in the URL if not define a random number
 function setDefault(){
-//   const queryString = window.location.search;
+  const queryString = window.location.search;
   let seed=Math.floor(Math.random() * 1000000); //Random number by default
   let version="full"
   if (queryString){
