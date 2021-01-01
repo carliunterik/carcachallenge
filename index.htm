@@ -126,6 +126,23 @@ button:disabled  {
   text-align: left;
 }
 
+     
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 0.1em white, 0 0 0.2em white, 0 0 0.3em white, 0 0 0.5em gold;
+  }
+  
+  to {
+    text-shadow: 0 0 0.2em white, 0 0 0.3em gold, 0 0 0.4em gold, 0 0 0.6em gold;
+  }
+} 
+
  
 @font-face {
         font-family: 'carcaFont';
@@ -337,11 +354,11 @@ function checkButtons(){
         //Define null meeple in starting tile
         document.getElementById("currentColor").src = "meeples/null.png"
         }else{
-//         document.getElementById("counter").innerText = index + 1 + " of " + images.length;
+        document.getElementById("counter").innerText = index + 1 + " of " + images.length;
            if ((index + 1) == lasttile){
-               document.getElementById("counter").innerText = (index + 1) + " of " + images.length + "  🏆";
+               document.getElementById("counter").classList.add("glow");
            }else{
-               document.getElementById("counter").innerText = (index + 1) + " of " + images.length;
+               document.getElementById("counter").classList.remove("glow");
            }
         //Define meeple order image
         document.getElementById("currentColor").src = "meeples/" + (index - 1)  % nmeeples + ".png"
