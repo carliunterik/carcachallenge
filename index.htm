@@ -339,9 +339,9 @@ function checkButtons(){
         }else{
 //         document.getElementById("counter").innerText = index + 1 + " of " + images.length;
            if ((index + 1) == lasttile){
-               document.getElementById("counter").innerText = "🏆" + index + 1 + " of " + images.length + "🏆";
+               document.getElementById("counter").innerText = (index + 1) + " of " + images.length + "  🏆";
            }else{
-               document.getElementById("counter").innerText = index + 1 + " of " + images.length;
+               document.getElementById("counter").innerText = (index + 1) + " of " + images.length;
            }
         //Define meeple order image
         document.getElementById("currentColor").src = "meeples/" + (index - 1)  % nmeeples + ".png"
