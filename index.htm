@@ -350,7 +350,7 @@ function checkButtons(){
 //Share function
 function share() {
    var textLasttile = ""
-  if (lasttile > 0){
+  if (index > 0){
  textLasttile = "&l="+ index + 1
   }
   var person = prompt("Copy the following URL to share this challenge", window.location.href.split('?')[0] + "?s="+seed+"&v="+document.getElementById("version").value + textLasttile);
